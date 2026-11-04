@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+</head>
+<body>
+
+<h1>Registration Form</h1>
+
+<form id="registrationForm" onsubmit="return validationForm()">
+
+    <label>Name:</label>
+    <input type="text" name="name" id="name">
+    <br><br>
+
+    <label>Email:</label>
+    <input type="email" name="email" id="email">
+    <br><br>
+
+    <label>Password:</label>
+    <input type="password" name="password" id="password">
+    <br><br>
+
+    <label>Age:</label>
+    <input type="number" name="age" id="age">
+    <br><br>
+
+    <label>Gender:</label>
+    <input type="radio" name="gender" value="male">Male
+    <input type="radio" name="gender" value="female">Female
+    <br><br>
+
+    <label>Course:</label>
+    <select name="course" id="course">
+        <option value="">Select Course</option>
+        <option>MCA</option>
+        <option>MBA</option>
+        <option>MCOM</option>
+        <option>M.TECH</option>
+    </select>
+    <br><br>
+
+    <label>Hobbies:</label>
+    <input type="checkbox" name="hobby" value="reading">Reading
+    <input type="checkbox" name="hobby" value="sports">Sports
+    <input type="checkbox" name="hobby" value="music">Music
+    <br><br>
+
+    <label>Address:</label>
+    <textarea name="address" rows="4" cols="30" id="address"></textarea>
+    <br><br>
+
+    <label>DOB:</label>
+    <input type="date" name="dob" id="dob">
+    <br><br>
+
+    <input type="submit" value="Register">
+    <input type="reset" value="Clear">
+
+</form>
+
+<script>
+
+
+function validationForm() {
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value;
+    let age = document.getElementById("age").value;
+
+    let gender = document.getElementsByName("gender");
+    let genderSelected = false;
+
+    let course = document.getElementById("course").value;
+
+    let hobbies = document.getElementsByName("hobby");
+    let hobbySelected = false;
+
+    let address = document.getElementById("address").value.trim();
+    let dob = document.getElementById("dob").value;
+
+    let msg = "";
+
+    if (name == "") {
+        msg += "Enter your name\n";
+    }
+
+    if (email == "") {
+        msg += "Enter your email\n";
+    }
+
+    if (password == "") {
+        msg += "Enter password\n";
+    }
+
+    if (age == "") {
+        msg += "Enter a valid age\n";
+    }
+
+    for (let i = 0; i < gender.length; i++) {
+        if (gender[i].checked) {
+            genderSelected = true;
+        }
+    }
+
+    if (!genderSelected) {
+        msg += "Select your gender\n";
+    }
+
+    if (course == "") {
+        msg += "Select your course\n";
+    }
+
+    for (let i = 0; i < hobbies.length; i++) {
+        if (hobbies[i].checked) {
+            hobbySelected = true;
+        }
+    }
+
+    if (!hobbySelected) {
+        msg += "Select at least one hobby\n";
+    }
+
+    if (address == "") {
+        msg += "Enter your address\n";
+    }
+
+    if (dob == "") {
+        msg += "Enter your DOB\n";
+    }
+
+    if (msg != "") {
+        alert(msg);
+        return false;
+    } else {
+        alert("Registration Successful!");
+        return true;
+    }
+}
+</script>
+
+</body>
+</html>
+
+ 
